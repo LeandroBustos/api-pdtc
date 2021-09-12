@@ -1,0 +1,11 @@
+<header>CURSO PDTC</header>
+
+{{!-- Conditional rendering --}}
+<script>
+    console.log({{shouldRenderLogout}})
+    console.log({{user}})
+
+</script>
+{{#if shouldRenderLogout}}
+    <a href="/logout">Log out</a>
+{{/if}}

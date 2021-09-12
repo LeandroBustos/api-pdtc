@@ -1,0 +1,40 @@
+{{> header}}
+
+<form action="/login">
+    <h2>Login</h2>
+    <label for="email">Email</label>
+    <input type="text" name="email" required autocomplete="off">
+    <label for="password">Password</label>
+    <input type="password" name="password" required>
+    <button>Iniciar sesion</button>
+</form>
+<script>
+    const form = document.querySelector("form")
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+
+        const email = form.email.value
+        const password = form.password.value
+
+        try{            
+            const res = await fetch('/login', {
+                method: "POST",
+                body: JSON.stringify({email, password}),
+                headers: {'Content-Type': 'application/json'}
+            })
+
+            const data = await res.json()
+
+            if(data.isUser === true){
+                window.location.assign("/books/render_books_user")
+            } else {
+                window.location.assign("/login")
+            }
+        }catch(err){
+            console.log(err)
+        }
+    })
+</script>
+
+{{> footer}}

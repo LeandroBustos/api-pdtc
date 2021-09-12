@@ -1,0 +1,13 @@
+{{> header}}
+
+{{!-- helper block --}}
+{{#if libros.length}}
+    <h1>ESTOS SON LOS LIBROS QUE TENGO</h1>
+{{/if}}
+<ul>
+    {{#each libros}}
+        <li>{{this.name}} {{this.id}}</li>
+    {{/each}}
+</ul>
+
+{{> footer}}
